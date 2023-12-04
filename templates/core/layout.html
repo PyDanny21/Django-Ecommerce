@@ -1,0 +1,121 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speed</title>
+    {% block links %}{% endblock links %}
+    <link rel="stylesheet" href="{% static 'css/style1.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="banner1">
+        <h1><span>20%</span> Discounts</h1><p id="top">SEPT,2023</p>
+        <h3>TOP BRANDS, UMBEATABLE SAVINGS</h3>
+        <div class="call">
+            <img src="{% static 'images/icons8-call-50.png' %}" alt="">
+            <div class="call-line">
+                <p>Call to order</p>
+                <span>0200711272</span>
+            </div>
+        </div>
+    </div>
+    <nav>
+        <div class="logo">
+            <a href="{% url "index" %}"><h1><strong>SPEED</strong> </h1></a>
+        </div>
+        <div class="searchbar">
+            <div class="search">
+                <img src="{% static 'images/icons8-search-50.png.' %}" alt="">
+                <input type="search" name="search" id="search" placeholder="Search Products, Brand and Categories">
+            </div>
+            <input type="submit" value="SEARCH" class="search-btn">
+        </div>
+        <div class="profiles">
+            <div class="cart" style='cursor:pointer;'>
+                <div class="searchicon" ><img src="{% static 'images/icons8-search-50.png' %}"></div>
+            </div>
+            <div class="cart">
+                <a href="{% url "view_cart" %}"><img src="{% static 'images/icons8-cart-96.png' %}" alt=""></a>
+                <div class="cart-quantity"><p>{{Total_cart}}</p></div>
+            </div>
+            <div class="account">
+                <li class="dropdown"><a href="#"><span><i class="fa-solid fa-user" style="font-size: 25px;"></i></span></a>
+                    <ul>
+                            {% if request.user.is_authenticated %}
+                                <li><a href="{% url "view_cart" %}">Cart</a></li>
+                                <li><a href="#">Wishlist</a></li>
+                                <li><a href="#">News</a></li>
+                                <li><a href="{% url "logout" %}">Log out</a></li>
+                            {% else %}
+                            <li><a href="{% url "signup" %}">Create Account<i class="fa-solid fa-user"></i></a></li>
+                            <li><a href="#">Wishlist</a></li>
+                            <li><a href="#">News</a></li>
+                            <li><a href="{% url "signin" %}">Log in</a></li>
+                        {% endif %}
+                    </ul>
+        </div>
+        <div class="searchbar2">
+            <div class="search2">
+                <img src="{% static "images/icons8-search-50.png" %}" alt="">
+                <input type="search" name="search" id="search2" placeholder="Search Products, Brand and Categories">
+            </div>
+            <input type="submit" value="SEARCH" class="search2-btn">
+        </div>
+    </nav>
+    {% block body %}{% endblock body %}
+    
+    <footer class="section-p1">
+        <div class="col">
+            <h1>Speed</h1>
+            <h4>Contact</h4>
+            <p><strong>Email : </strong><a href="quansahd577@gmail.com" target="_blank">quansahd577@gmail.com</a></p>
+            <p><strong>Phone : </strong>+223555728267 / +223500374356</p>
+            <p><strong>Hours : </strong>08:00am-08:00pm, Mon - Sat</p>
+            <div class="follow">
+                <h4>Follow us</h4>
+                <div class="icons">
+                    <img src="{% static "images/icons8-call-48.png" %}" alt="call">
+                    <img src="{% static "images/icons8-email-48.png" %}" alt="email">
+                    <img src="{% static "images/icons8-facebook-48.png" %}" alt="facebook">
+                    <img src="{% static "images/icons8-instagram-48.png" %}" alt="instagram">
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <h4>About</h4>
+            <a href="#">About us</a>
+            <a href="#">Delivery Information</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & conditions</a>
+            <a href="#">Contact us</a>
+        </div>
+        <div class="col">
+            <h4>My Account</h4>
+            <a href="#">Sign In</a>
+            <a href="#">Tiktok</a>
+            <a href="#">Instagram</a>
+            <a href="#">Facebook</a>
+            <a href="#">Whatsapp</a>
+        </div>
+        <div class="col install">
+            <h4>Install App</h4>
+            <p>From Appstore or Google Play</p>
+            <div class="row">
+                <img src="{% static "images/app.jpg" %}" alt="">
+                <img src="{% static "images/play.jpg" %}" alt="">
+            </div>
+            <p>Secured Payment Gateways</p>
+            <img src="{% static "images/pay.png" %}" alt="">
+        </div>
+        <div class="copyright">
+            <p>&copy; Copyright 2023. All right reserved. (Speed Services)</p>
+        </div>
+    </footer>    
+
+    <script src="{% static "Js/app.js" %}"></script>
+    <script src="{% static "Js/new.js" %}"></script>
+</body>
+</html>

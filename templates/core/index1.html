@@ -1,0 +1,233 @@
+{% extends "core/layout.html" %}
+{% load static %}
+{% block body %}
+    <section class="banner2">
+        <!-- slideshow -->
+        <img src="{% static "images/1.jpg" %}" alt="" class="img-slide active">
+        <img src="{% static "images/2.jpg" %}" class="img-slide">
+        <img src="{% static "images/3.jpg" %}" class="img-slide">
+        <img src="{% static "images/4.jpg" %}" class="img-slide">
+        <img src="{% static "images/6.jpg" %}" class="img-slide">
+        <img src="{% static "images/9.jpg" %}" class="img-slide">
+        <div class="sidenav">
+            <h3>Top Categories</h3>
+            <ul>
+                {% for category in categories %}
+                <li><a href="#"><img src="{% static "images/icons8-menu-50.png" %}" alt=""><span>{{category.name}} </span></a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        
+        <div class="slider">
+            <div class="nav-btn active"></div>
+            <div class="nav-btn"></div>
+            <div class="nav-btn"></div>
+            <div class="nav-btn"></div>
+            <div class="nav-btn"></div>
+            <div class="nav-btn"></div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="items ad">
+            <div id="item-con2">
+                <div class="catList">
+                    <a href="#">
+                        <div class="image">
+                            <img src="{% static 'images/flash1.jpg' %}" alt="">
+                        </div>
+                    </a>
+                </div>
+                <a href="#" id="cate">Flash Sales</a>
+            </div>
+            <div id="item-con2">
+                <div class="catList">
+                    <a href="#">
+                        <div class="image">
+                            <img src="{% static 'images/gift.jpg' %}" alt="">
+                        </div>
+                    </a>
+                </div>
+                <a href="#" id="cate">Gift Cards</a>
+            </div>
+            <div id="item-con2">
+                <div class="catList">
+                    <a href="#">
+                        <div class="image">
+                            <img src="{% static 'images/cash.jpg' %}" alt="">
+                        </div>
+                    </a>
+                </div>
+                <a href="#" id="cate">Cash Back</a>
+            </div>
+            <div id="item-con2">
+                <div class="catList">
+                    <a href="#">
+                        <div class="image">
+                            <img src="{% static 'images/pr.jpg' %}" alt="">
+                        </div>
+                    </a>
+                </div>
+                <a href="#" id="cate">Promo</a>
+            </div>
+            <div id="item-con2">
+                <div class="catList">
+                    <a href="#">
+                        <div class="image">
+                            <img src="{% static 'images/7.jpg' %}" alt="">
+                        </div>
+                    </a>
+                </div>
+                <a href="#" id="cate">Give Aways</a>
+            </div>
+        </div>
+        <div class="item-heading">
+            <h2>New | Stock</h2>
+        </div>
+        <div class="items">
+            <div class="flash" style="width: 100%;align-items:center;justify-content:space-between;display:flex;margin:-30px 0 15px;padding:15px;margin:-30px 0 15px;">
+                <h3>Now in stock </h3>
+                <a href="{% url "search" %}">See all</a>
+            </div>
+            {% for product in latest reversed%}            
+                <div id="item-con">
+                        <div class="itemList">
+                            <a href="{% url "related" product.id%}">
+                                <div class="image">
+                                    <img src="{{product.image.url}} " alt="">
+                                </div>
+                                <div class="text">
+                                    <h2>{{product.name}} </h2>
+                                    <h3>GH&cent; <span> {{product.price}}</span></h3>
+                                    <p class="description">In stock</p>
+                                    {% comment %} <p class="qt">10 pieces</p> {% endcomment %}
+                                </div>
+                            </a>
+                        </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="items">
+            <div class="flash" style="width: 100%;align-items:center;justify-content:space-between;display:flex;margin:-30px 0 15px;padding:15px;margin:-30px 0 15px;">
+                <h3>UpTime : 08:40:23</h3>
+                <a href="{% url "search" %}">See all</a>
+            </div>
+            {% for product in products %}            
+                <div id="item-con">
+                        <div class="itemList">
+                            <a href="{% url "related" product.id%}">
+                                <div class="image">
+                                    <img src="{{product.image.url}} " alt="">
+                                </div>
+                                <div class="text">
+                                    <h2>{{product.name}} </h2>
+                                    <h3>GH&cent; <span> {{product.price}}</span></h3>
+                                    <p class="description">In stock</p>
+                                    {% comment %} <p class="qt">10 pieces</p> {% endcomment %}
+                                </div>
+                            </a>
+                        </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="item-heading">
+            <h2>Awesome Deals</h2>
+        </div>
+        <div class="items">
+            <div class="flash" style="width: 100%;align-items:center;justify-content:space-between;display:flex;margin:-30px 0 15px;padding:15px;margin:-30px 0 15px;">
+                <h3>Weekends- (9:30AM-6:00PM)</h3>
+                <a href="{% url "search" %}">See all</a>
+            </div>
+            {% for product in products reversed%}            
+                <div id="item-con">
+                        <div class="itemList">
+                            <a href="{% url "related" product.id%}">
+                                <div class="image">
+                                    <img src="{{product.image.url}} " alt="">
+                                </div>
+                                <div class="text">
+                                    <h2>{{product.name}} </h2>
+                                    <h3>GH&cent; <span> {{product.price}}</span></h3>
+                                    <p class="description">In stock</p>
+                                    {% comment %} <p class="qt">10 pieces</p> {% endcomment %}
+                                </div>
+                            </a>
+                        </div>
+                </div>
+            {% endfor %}
+            {% comment %} <div class='pagination'>
+                <span class='step-links'>
+                    {% if page.has_previous %}
+                        <a href='?page={{page.previous_page_number}}'><<</a>
+                    {% endif %}
+                    <span class='current'>
+                        Page {{page.number}} of {{page.paginator.num_pages}}.
+
+                    </span>
+                    {% if page.has_next %}
+                        <a href='?page={{page.next_page_number}}'>>></a>
+                    {% endif %}
+
+
+                </span>
+            </div> {% endcomment %}
+
+        </div>
+        <div class="item-heading">
+            <h2>Amazing Discounts</h2>
+        </div>
+        <div class="items">
+            <div class="flash" style="width: 100%;align-items:center;justify-content:space-between;display:flex;margin:-30px 0 15px;padding:15px;margin:-30px 0 15px;">
+                <h3>Now - 1 <sup>st</sup> January,2024</h3>
+                <a href="{% url "search" %}">See all</a>
+            </div>
+            {% for product in products %}            
+                <div id="item-con">
+                        <div class="itemList">
+                            <a href="{% url "related" product.id%}">
+                                <div class="image">
+                                    <img src="{{product.image.url}} " alt="">
+                                </div>
+                                <div class="text">
+                                    <h2>{{product.name}} </h2>
+                                    <h3>GH&cent; <span> {{product.price}}</span></h3>
+                                    <p class="description">In stock</p>
+                                    {% comment %} <p class="qt">10 pieces</p> {% endcomment %}
+                                </div>
+                            </a>
+                        </div>
+                </div>
+            {% endfor %}
+
+        </div>
+        <div class="item-heading">
+            <h2>Recent Items</h2>
+
+        </div>
+        <div class="items">
+            <div class="flash" style="width: 100%;align-items:center;justify-content:space-between;display:flex;margin:-30px 0 15px;padding:15px;margin:-30px 0 15px;">
+                <h3>Most recent</h3>
+                <a href="{% url "search" %}">See all</a>
+            </div>
+            {% for product in products reversed%}            
+                <div id="item-con">
+                        <div class="itemList">
+                            <a href="{% url "related" product.id%}">
+                                <div class="image">
+                                    <img src="{{product.image.url}} " alt="">
+                                </div>
+                                <div class="text">
+                                    <h2>{{product.name}} </h2>
+                                    <h3>GH&cent; <span> {{product.price}}</span></h3>
+                                    <p class="description">In stock</p>
+                                    {% comment %} <p class="qt">10 pieces</p> {% endcomment %}
+                                </div>
+                            </a>
+                        </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+  
+{% endblock body %}

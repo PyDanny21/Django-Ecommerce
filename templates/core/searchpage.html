@@ -1,0 +1,62 @@
+{% extends "core/layout.html" %}
+{% load static %}
+{% block body %}
+    <h1 id="intro">Search For All Products</h1>
+    <div class="items">
+        {% for item in page_oj %}
+        <div id="item-con">
+                <div class="itemList">
+                    <a href="{% url "details" item.id%}">
+                        <div class="image">
+                            <img src="{{item.image.url}} " alt="">
+                        </div>
+                        <div class="text">
+                            <h2 class='product-name'>{{item.name}} </h2>
+                            <h3>GH&cent; <span> {{item.price}}</span></h3>
+                            <p class="description">In stock</p>
+                            {% comment %} <p class="qt">10 pieces</p> {% endcomment %}
+                        </div>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+            <div class='pagination' style ='display: flex;justify-content: space-between;align-items: end;width: 100%;'>
+                
+                <span class='current'>
+                    Page {{page_oj.number}} of {{page_oj.paginator.num_pages}}.
+                </span>
+                <span class='step-links'>
+                    {% if page_oj.has_previous %}
+                        <a href='?page={{page.previous_page_number}}'>{{page_oj.paginator.previous_num_pages}} </a>
+                        <a href='?page={{page.previous_page_number}}'>Back</a>
+                    {% endif %}
+                    <span class='current'>
+                         {{page_oj.number}}
+                    </span>
+                    {% if page_oj.has_next %}
+                        <a href='?page={{page_oj.next_page_number}}'> Next</a>
+                        <a href='?page={{page_oj.next_page_number}}'>{{page_oj.paginator.next_page_number}} </a>
+                    {% endif %}
+
+
+                </span>
+            </div> 
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Focus on the search bar
+            
+            if (window.innerWidth<=1000) {
+                document.querySelector('.searchbar2').style.display='flex';
+                document.querySelector('#search2').focus();    
+            } else {                
+                document.getElementById("search").focus();
+                document.querySelector('.searchbar2').style.display='none';
+                
+
+            }
+            
+        });
+
+    </script>
+{% endblock body %}

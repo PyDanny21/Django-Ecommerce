@@ -1,0 +1,73 @@
+{% extends "core/layout.html" %}
+{% load static %}
+{% block body %}
+    <div class="category">
+        <p></p>
+    </div>
+    <div class="Product-container">
+    
+        <div class="details" style='padding:14px;height:fit-content;justify-content:space-between;'>
+            <div class="item-image" style='height:80%;flex-basis:50%;'>
+                <img src="{{details.image.url}}" alt="">
+                <h3>Share Product / Follow us</h3>
+                <div class="icons">
+                    <style>
+                        .icons img {
+                            width: 25px;
+                            height: 25px;
+                        }
+                    </style>
+                    <img src="{% static "images/icons8-call-48.png" %}" alt="call">
+                    <img src="{% static "images/icons8-email-48.png" %}" alt="email">
+                    <img src="{% static "images/icons8-facebook-48.png" %}" alt="facebook">
+                    <img src="{% static "images/icons8-instagram-48.png" %}" alt="instagram">
+                </div>
+            </div>
+            <div class="description-info" style='padding:20px;'>
+                <h1>{{details.name}} </h1>
+                <span>Brand: <a href="#">{{details.category}} </a>|<a href="#">{{details.name}} </a></span><hr>
+                <h1>GH&cent;{{details.price}} </h1>
+                <p>{{details.description}} </p><br>
+                <span style="color:gray;">In stock</span><br>
+                <p>Buy 150 cedis and above and get free delivery</p><br>
+                <span class="rate">&bigstar;&bigstar;&bigstar;&bigstar;&bigstar;&star;</span>
+                <a href="{% url "add_cart" details.id%}" class="cartBtn">
+                    <img src="{% static "images/icons8-cart-96.png" %}" alt="">
+                    <button type="submit" id="submit" class="addCart"><span>ADD TO CART</span></button>
+                </a>
+            </div>
+        </div>
+        <div class="order-info">
+            <h1>Order Information</h1>
+            <h1>Order Information</h1>
+            <h1>Order Information</h1>
+            <h1>Order Information</h1>
+            <h1>Order Information</h1>
+        </div>
+    
+    </div>
+        <div class="item-heading">
+            <h2>RELATED ITEMS</h2>
+        </div>
+        <div class="items">
+            
+            {% for product in related_items %}            
+                <div id="item-con">
+                        <div class="itemList">
+                            <a href="{% url "details" product.id%}">
+                                <div class="image">
+                                    <img src="{{product.image.url}} " alt="">
+                                </div>
+                                <div class="text">
+                                    <h2>{{product.name}} </h2>
+                                    <h3>GH&cent; <span> {{product.price}}</span></h3>
+                                    <p class="description">In stock</p>
+                                    {% comment %} <p class="qt">10 pieces</p> {% endcomment %}
+                                </div>
+                            </a>
+                        </div>
+                </div>
+            {% endfor %}
+        </div>
+
+{% endblock body %}

@@ -1,0 +1,41 @@
+{% extends "core/layout.html" %}
+{% load static %}
+{% block body %}
+    <div class="itembanner">
+        <h1>{{related.category}}</h3>
+            <img src="{% static "images/10.jpg" %}" class="img">
+    </div>
+    <style>
+        .img {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+        .itembanner{
+            position:relative;
+        }
+        .itembanner h1{
+            z-index:9999;
+        }
+    </style>
+    <h1 id="intro">Explore top items in this category</h1>
+    <div class="items">
+        {% for item in relatedCat %}
+        <div id="item-con">
+                <div class="itemList">
+                    <a href="{% url "details" item.id%}">
+                        <div class="image">
+                            <img src="{{item.image.url}} " alt="">
+                        </div>
+                        <div class="text">
+                            <h2 class='product-name'>{{item.name}} </h2>
+                            <h3>GH&cent; <span> {{item.price}}</span></h3>
+                            <p class="description">In stock</p>
+                            {% comment %} <p class="qt">10 pieces</p> {% endcomment %}
+                        </div>
+                    </a>
+                </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock body %}

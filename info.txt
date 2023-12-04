@@ -1,0 +1,3 @@
+django admin details
+username:admin
+password:admin

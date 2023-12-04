@@ -1,0 +1,50 @@
+form{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    padding: 10px;
+}
+label {
+    font-weight: 900;
+    font-size: larger;
+    margin: 10px;
+}
+input{
+    height: 40px;
+    width: 100%;
+    outline: none;
+    padding: 10px;
+    font-size: medium;
+}
+.pass{
+    width: 100%;
+    /* background-color: red; */
+}
+#password{
+    width: 100%;
+}
+.pass i {
+    margin: auto;
+    width: 10%;
+    padding-left: 8px;
+    /* border: 1px solid; */
+    /* height: 100%; */
+    position: absolute;
+    margin: 10px -46px;
+}
+button {
+    margin: 10px 0;
+    width: 90px;
+    height: 35px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    font-size: large;
+    font-weight: 600;
+    background: green;
+    color: #fff;
+}
+.btt{
+    display: flex;
+    justify-content: space-between;
+}

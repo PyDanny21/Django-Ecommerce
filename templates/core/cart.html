@@ -1,0 +1,70 @@
+{% extends "core/layout.html" %}
+{% load static %}
+{% block body %}
+    <div class="container">
+        <style>
+            @media (max-width:900px){
+                .des {
+                    width: 50%;
+                    padding: 5px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    height: 100%;
+                }
+            }
+            #cartitem {
+                height: 150px;
+            }
+            .increased, .decreased {
+                width: 30px;
+                height: 30px;
+                font-size: x-large;
+                border: none;
+                background: green;
+                color: #fff;
+                cursor: pointer;
+            }
+        </style>
+        <div class="items cart">
+            <h4>Cart | Page</h4>
+            <br>
+            {% for cart in cart_items %}
+            <div id="cartitem">
+                <div class="image1">
+                    <img src="{{cart.cart.image.url}} " alt="">
+                </div>
+                <div class="des">
+                    <h2>{{cart.cart.name}} </h2>
+                    <h3>GH&cent; <span class="item-price">{{cart.cart.price}} </span></h3>
+                    <p class="description">{{cart.cart.description}} </p>
+                    <div class="quantity">
+                        <!-- <form action="post" class="increaseF">
+                            <button class="increase">+</button>
+                        </form>
+                        <p class="number">1</p>
+                        <form action="post" class="decreaseF">
+                            <button class="decrease">-</button>
+                        </form> -->
+                        <button class="increase">+</button>
+                        <p class="quantity-value">1</p>
+                        <button class="decrease">-</button>
+
+                    </div>
+                </div>
+                <a href="{% url "remove" cart.id%}" class="bin"><img src="{% static "images/bin.png" %} " alt=""></a>
+            </div>
+            {% endfor %}
+            
+            <div class="controls">
+                <h2>Total :  GH&cent; <span id="total-amount">0.00</span></h2>
+                <div class="c-links">
+                    <a href="{% url "delete" %}">Clear</a>
+                    <a href="#">Order</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+       
+{% endblock body %}
