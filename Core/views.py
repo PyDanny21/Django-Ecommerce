@@ -17,14 +17,7 @@ def index(request):
     first= len(latestPro)-14
     second=len(latestPro)
     latest=Product.objects.filter(is_sold=False)[first:second]
-    products=Product.objects.filter(is_sold=False)[a:b]
-    # try:
-    #     products=paginator.page(page)
-    # except PageNotAnInteger:
-    #     products=paginator.page(1)
-    # except EmptyPage:
-    #     products=paginator.page(paginator.num_pages)
-        
+    products=Product.objects.filter(is_sold=False)[a:b]  
     
     categories=Category.objects.all()
     Total_cart=CartItem.objects.count()
@@ -79,7 +72,7 @@ def add_cart(request, pk):
     cart = get_object_or_404(Product, pk=pk)
     cart_item, created=CartItem.objects.get_or_create(cart=cart)
     cart_item.save()
-    return HttpResponse('<h2 style="font-size: 30px;">Successful</h2>')
+    return redirect('search')
 
 
 def view_cart(request):
@@ -166,4 +159,6 @@ def logout(request):
     return redirect('signin')
 
 
-    
+@login_required(login_url='signin')
+def checkout(request):
+    return render(request,'checkout.html')
